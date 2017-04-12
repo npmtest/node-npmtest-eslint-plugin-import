@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-eslint-plugin-import/eslint-plugin-import/lib/core/importType.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-eslint-plugin-import">npmtest-eslint-plugin-import (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-eslint-plugin-import/eslint-plugin-import/lib/core/importType.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">66.67% <small>(28 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">22.22% <small>(4 / 18)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">16.67% <small>(2 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">69.23% <small>(27 / 39)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-eslint-plugin-import/eslint-plugin-import/lib/core/</a> &#187; importType.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isBuiltIn = isBuiltIn;
+exports.default = resolveImportType;
+&nbsp;
+var _lodash = require('lodash.cond');
+&nbsp;
+var _lodash2 = _interopRequireDefault(_lodash);
+&nbsp;
+var _builtinModules = require('builtin-modules');
+&nbsp;
+var _builtinModules2 = _interopRequireDefault(_builtinModules);
+&nbsp;
+var _path = require('path');
+&nbsp;
+var _resolve = require('eslint-module-utils/resolve');
+&nbsp;
+var _resolve2 = _interopRequireDefault(_resolve);
+&nbsp;
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { default: obj }; }
+&nbsp;
+function constant(value) {
+  return () =&gt; <span class="cstat-no" title="statement not covered" >value;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function isAbsolute(name) {</span>
+<span class="cstat-no" title="statement not covered" >  return name.indexOf('/') === 0;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function isBuiltIn(name, settings) {</span>
+<span class="cstat-no" title="statement not covered" >  const extras = settings &amp;&amp; settings['import/core-modules'] || [];</span>
+<span class="cstat-no" title="statement not covered" >  return _builtinModules2.default.indexOf(name) !== -1 || extras.indexOf(name) &gt; -1;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function isExternalPath(path, name, settings) {</span>
+<span class="cstat-no" title="statement not covered" >  const folders = settings &amp;&amp; settings['import/external-module-folders'] || ['node_modules'];</span>
+<span class="cstat-no" title="statement not covered" >  return !path || folders.some(folder =&gt; <span class="cstat-no" title="statement not covered" >-1 &lt; path.indexOf((0, _path.join)(folder, name)))</span>;</span>
+}
+&nbsp;
+const externalModuleRegExp = /^\w/;
+<span class="fstat-no" title="function not covered" >function isExternalModule(name, settings, path) {</span>
+<span class="cstat-no" title="statement not covered" >  return externalModuleRegExp.test(name) &amp;&amp; isExternalPath(path, name, settings);</span>
+}
+&nbsp;
+const scopedRegExp = /^@\w+\/\w+/;
+<span class="fstat-no" title="function not covered" >function isScoped(name) {</span>
+<span class="cstat-no" title="statement not covered" >  return scopedRegExp.test(name);</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function isInternalModule(name, settings, path) {</span>
+<span class="cstat-no" title="statement not covered" >  return externalModuleRegExp.test(name) &amp;&amp; !isExternalPath(path, name, settings);</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function isRelativeToParent(name) {</span>
+<span class="cstat-no" title="statement not covered" >  return name.indexOf('../') === 0;</span>
+}
+&nbsp;
+const indexFiles = ['.', './', './index', './index.js'];
+<span class="fstat-no" title="function not covered" >function isIndex(name) {</span>
+<span class="cstat-no" title="statement not covered" >  return indexFiles.indexOf(name) !== -1;</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function isRelativeToSibling(name) {</span>
+<span class="cstat-no" title="statement not covered" >  return name.indexOf('./') === 0;</span>
+}
+&nbsp;
+const typeTest = (0, _lodash2.default)([[isAbsolute, constant('absolute')], [isBuiltIn, constant('builtin')], [isExternalModule, constant('external')], [isScoped, constant('external')], [isInternalModule, constant('internal')], [isRelativeToParent, constant('parent')], [isIndex, constant('index')], [isRelativeToSibling, constant('sibling')], [constant(true), constant('unknown')]]);
+&nbsp;
+<span class="fstat-no" title="function not covered" >function resolveImportType(name, context) {</span>
+<span class="cstat-no" title="statement not covered" >  return typeTest(name, context.settings, (0, _resolve2.default)(name, context));</span>
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvcmUvaW1wb3J0VHlwZS5qcyJdLCJuYW1lcyI6WyJpc0J1aWx0SW4iLCJyZXNvbHZlSW1wb3J0VHlwZSIsImNvbnN0YW50IiwidmFsdWUiLCJpc0Fic29sdXRlIiwibmFtZSIsImluZGV4T2YiLCJzZXR0aW5ncyIsImV4dHJhcyIsImlzRXh0ZXJuYWxQYXRoIiwicGF0aCIsImZvbGRlcnMiLCJzb21lIiwiZm9sZGVyIiwiZXh0ZXJuYWxNb2R1bGVSZWdFeHAiLCJpc0V4dGVybmFsTW9kdWxlIiwidGVzdCIsInNjb3BlZFJlZ0V4cCIsImlzU2NvcGVkIiwiaXNJbnRlcm5hbE1vZHVsZSIsImlzUmVsYXRpdmVUb1BhcmVudCIsImluZGV4RmlsZXMiLCJpc0luZGV4IiwiaXNSZWxhdGl2ZVRvU2libGluZyIsInR5cGVUZXN0IiwiY29udGV4dCJdLCJtYXBwaW5ncyI6Ijs7Ozs7UUFjZ0JBLFMsR0FBQUEsUztrQkFpRFFDLGlCOztBQS9EeEI7Ozs7QUFDQTs7OztBQUNBOztBQUVBOzs7Ozs7QUFFQSxTQUFTQyxRQUFULENBQWtCQyxLQUFsQixFQUF5QjtBQUN2QixTQUFPLE1BQU1BLEtBQWI7QUFDRDs7QUFFRCxTQUFTQyxVQUFULENBQW9CQyxJQUFwQixFQUEwQjtBQUN4QixTQUFPQSxLQUFLQyxPQUFMLENBQWEsR0FBYixNQUFzQixDQUE3QjtBQUNEOztBQUVNLFNBQVNOLFNBQVQsQ0FBbUJLLElBQW5CLEVBQXlCRSxRQUF6QixFQUFtQztBQUN4QyxRQUFNQyxTQUFVRCxZQUFZQSxTQUFTLHFCQUFULENBQWIsSUFBaUQsRUFBaEU7QUFDQSxTQUFPLHlCQUFlRCxPQUFmLENBQXVCRCxJQUF2QixNQUFpQyxDQUFDLENBQWxDLElBQXVDRyxPQUFPRixPQUFQLENBQWVELElBQWYsSUFBdUIsQ0FBQyxDQUF0RTtBQUNEOztBQUVELFNBQVNJLGNBQVQsQ0FBd0JDLElBQXhCLEVBQThCTCxJQUE5QixFQUFvQ0UsUUFBcEMsRUFBOEM7QUFDNUMsUUFBTUksVUFBV0osWUFBWUEsU0FBUyxnQ0FBVCxDQUFiLElBQTRELENBQUMsY0FBRCxDQUE1RTtBQUNBLFNBQU8sQ0FBQ0csSUFBRCxJQUFTQyxRQUFRQyxJQUFSLENBQWFDLFVBQVUsQ0FBQyxDQUFELEdBQUtILEtBQUtKLE9BQUwsQ0FBYSxnQkFBS08sTUFBTCxFQUFhUixJQUFiLENBQWIsQ0FBNUIsQ0FBaEI7QUFDRDs7QUFFRCxNQUFNUyx1QkFBdUIsS0FBN0I7QUFDQSxTQUFTQyxnQkFBVCxDQUEwQlYsSUFBMUIsRUFBZ0NFLFFBQWhDLEVBQTBDRyxJQUExQyxFQUFnRDtBQUM5QyxTQUFPSSxxQkFBcUJFLElBQXJCLENBQTBCWCxJQUExQixLQUFtQ0ksZUFBZUMsSUFBZixFQUFxQkwsSUFBckIsRUFBMkJFLFFBQTNCLENBQTFDO0FBQ0Q7O0FBRUQsTUFBTVUsZUFBZSxZQUFyQjtBQUNBLFNBQVNDLFFBQVQsQ0FBa0JiLElBQWxCLEVBQXdCO0FBQ3RCLFNBQU9ZLGFBQWFELElBQWIsQ0FBa0JYLElBQWxCLENBQVA7QUFDRDs7QUFFRCxTQUFTYyxnQkFBVCxDQUEwQmQsSUFBMUIsRUFBZ0NFLFFBQWhDLEVBQTBDRyxJQUExQyxFQUFnRDtBQUM5QyxTQUFPSSxxQkFBcUJFLElBQXJCLENBQTBCWCxJQUExQixLQUFtQyxDQUFDSSxlQUFlQyxJQUFmLEVBQXFCTCxJQUFyQixFQUEyQkUsUUFBM0IsQ0FBM0M7QUFDRDs7QUFFRCxTQUFTYSxrQkFBVCxDQUE0QmYsSUFBNUIsRUFBa0M7QUFDaEMsU0FBT0EsS0FBS0MsT0FBTCxDQUFhLEtBQWIsTUFBd0IsQ0FBL0I7QUFDRDs7QUFFRCxNQUFNZSxhQUFhLENBQUMsR0FBRCxFQUFNLElBQU4sRUFBWSxTQUFaLEVBQXVCLFlBQXZCLENBQW5CO0FBQ0EsU0FBU0MsT0FBVCxDQUFpQmpCLElBQWpCLEVBQXVCO0FBQ3JCLFNBQU9nQixXQUFXZixPQUFYLENBQW1CRCxJQUFuQixNQUE2QixDQUFDLENBQXJDO0FBQ0Q7O0FBRUQsU0FBU2tCLG1CQUFULENBQTZCbEIsSUFBN0IsRUFBbUM7QUFDakMsU0FBT0EsS0FBS0MsT0FBTCxDQUFhLElBQWIsTUFBdUIsQ0FBOUI7QUFDRDs7QUFFRCxNQUFNa0IsV0FBVyxzQkFBSyxDQUNwQixDQUFDcEIsVUFBRCxFQUFhRixTQUFTLFVBQVQsQ0FBYixDQURvQixFQUVwQixDQUFDRixTQUFELEVBQVlFLFNBQVMsU0FBVCxDQUFaLENBRm9CLEVBR3BCLENBQUNhLGdCQUFELEVBQW1CYixTQUFTLFVBQVQsQ0FBbkIsQ0FIb0IsRUFJcEIsQ0FBQ2dCLFFBQUQsRUFBV2hCLFNBQVMsVUFBVCxDQUFYLENBSm9CLEVBS3BCLENBQUNpQixnQkFBRCxFQUFtQmpCLFNBQVMsVUFBVCxDQUFuQixDQUxvQixFQU1wQixDQUFDa0Isa0JBQUQsRUFBcUJsQixTQUFTLFFBQVQsQ0FBckIsQ0FOb0IsRUFPcEIsQ0FBQ29CLE9BQUQsRUFBVXBCLFNBQVMsT0FBVCxDQUFWLENBUG9CLEVBUXBCLENBQUNxQixtQkFBRCxFQUFzQnJCLFNBQVMsU0FBVCxDQUF0QixDQVJvQixFQVNwQixDQUFDQSxTQUFTLElBQVQsQ0FBRCxFQUFpQkEsU0FBUyxTQUFULENBQWpCLENBVG9CLENBQUwsQ0FBakI7O0FBWWUsU0FBU0QsaUJBQVQsQ0FBMkJJLElBQTNCLEVBQWlDb0IsT0FBakMsRUFBMEM7QUFDdkQsU0FBT0QsU0FBU25CLElBQVQsRUFBZW9CLFFBQVFsQixRQUF2QixFQUFpQyx1QkFBUUYsSUFBUixFQUFjb0IsT0FBZCxDQUFqQyxDQUFQO0FBQ0QiLCJmaWxlIjoiY29yZS9pbXBvcnRUeXBlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IGNvbmQgZnJvbSAnbG9kYXNoLmNvbmQnXG5pbXBvcnQgYnVpbHRpbk1vZHVsZXMgZnJvbSAnYnVpbHRpbi1tb2R1bGVzJ1xuaW1wb3J0IHsgam9pbiB9IGZyb20gJ3BhdGgnXG5cbmltcG9ydCByZXNvbHZlIGZyb20gJ2VzbGludC1tb2R1bGUtdXRpbHMvcmVzb2x2ZSdcblxuZnVuY3Rpb24gY29uc3RhbnQodmFsdWUpIHtcbiAgcmV0dXJuICgpID0+IHZhbHVlXG59XG5cbmZ1bmN0aW9uIGlzQWJzb2x1dGUobmFtZSkge1xuICByZXR1cm4gbmFtZS5pbmRleE9mKCcvJykgPT09IDBcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIGlzQnVpbHRJbihuYW1lLCBzZXR0aW5ncykge1xuICBjb25zdCBleHRyYXMgPSAoc2V0dGluZ3MgJiYgc2V0dGluZ3NbJ2ltcG9ydC9jb3JlLW1vZHVsZXMnXSkgfHwgW11cbiAgcmV0dXJuIGJ1aWx0aW5Nb2R1bGVzLmluZGV4T2YobmFtZSkgIT09IC0xIHx8IGV4dHJhcy5pbmRleE9mKG5hbWUpID4gLTFcbn1cblxuZnVuY3Rpb24gaXNFeHRlcm5hbFBhdGgocGF0aCwgbmFtZSwgc2V0dGluZ3MpIHtcbiAgY29uc3QgZm9sZGVycyA9IChzZXR0aW5ncyAmJiBzZXR0aW5nc1snaW1wb3J0L2V4dGVybmFsLW1vZHVsZS1mb2xkZXJzJ10pIHx8IFsnbm9kZV9tb2R1bGVzJ11cbiAgcmV0dXJuICFwYXRoIHx8IGZvbGRlcnMuc29tZShmb2xkZXIgPT4gLTEgPCBwYXRoLmluZGV4T2Yoam9pbihmb2xkZXIsIG5hbWUpKSlcbn1cblxuY29uc3QgZXh0ZXJuYWxNb2R1bGVSZWdFeHAgPSAvXlxcdy9cbmZ1bmN0aW9uIGlzRXh0ZXJuYWxNb2R1bGUobmFtZSwgc2V0dGluZ3MsIHBhdGgpIHtcbiAgcmV0dXJuIGV4dGVybmFsTW9kdWxlUmVnRXhwLnRlc3QobmFtZSkgJiYgaXNFeHRlcm5hbFBhdGgocGF0aCwgbmFtZSwgc2V0dGluZ3MpXG59XG5cbmNvbnN0IHNjb3BlZFJlZ0V4cCA9IC9eQFxcdytcXC9cXHcrL1xuZnVuY3Rpb24gaXNTY29wZWQobmFtZSkge1xuICByZXR1cm4gc2NvcGVkUmVnRXhwLnRlc3QobmFtZSlcbn1cblxuZnVuY3Rpb24gaXNJbnRlcm5hbE1vZHVsZShuYW1lLCBzZXR0aW5ncywgcGF0aCkge1xuICByZXR1cm4gZXh0ZXJuYWxNb2R1bGVSZWdFeHAudGVzdChuYW1lKSAmJiAhaXNFeHRlcm5hbFBhdGgocGF0aCwgbmFtZSwgc2V0dGluZ3MpXG59XG5cbmZ1bmN0aW9uIGlzUmVsYXRpdmVUb1BhcmVudChuYW1lKSB7XG4gIHJldHVybiBuYW1lLmluZGV4T2YoJy4uLycpID09PSAwXG59XG5cbmNvbnN0IGluZGV4RmlsZXMgPSBbJy4nLCAnLi8nLCAnLi9pbmRleCcsICcuL2luZGV4LmpzJ11cbmZ1bmN0aW9uIGlzSW5kZXgobmFtZSkge1xuICByZXR1cm4gaW5kZXhGaWxlcy5pbmRleE9mKG5hbWUpICE9PSAtMVxufVxuXG5mdW5jdGlvbiBpc1JlbGF0aXZlVG9TaWJsaW5nKG5hbWUpIHtcbiAgcmV0dXJuIG5hbWUuaW5kZXhPZignLi8nKSA9PT0gMFxufVxuXG5jb25zdCB0eXBlVGVzdCA9IGNvbmQoW1xuICBbaXNBYnNvbHV0ZSwgY29uc3RhbnQoJ2Fic29sdXRlJyldLFxuICBbaXNCdWlsdEluLCBjb25zdGFudCgnYnVpbHRpbicpXSxcbiAgW2lzRXh0ZXJuYWxNb2R1bGUsIGNvbnN0YW50KCdleHRlcm5hbCcpXSxcbiAgW2lzU2NvcGVkLCBjb25zdGFudCgnZXh0ZXJuYWwnKV0sXG4gIFtpc0ludGVybmFsTW9kdWxlLCBjb25zdGFudCgnaW50ZXJuYWwnKV0sXG4gIFtpc1JlbGF0aXZlVG9QYXJlbnQsIGNvbnN0YW50KCdwYXJlbnQnKV0sXG4gIFtpc0luZGV4LCBjb25zdGFudCgnaW5kZXgnKV0sXG4gIFtpc1JlbGF0aXZlVG9TaWJsaW5nLCBjb25zdGFudCgnc2libGluZycpXSxcbiAgW2NvbnN0YW50KHRydWUpLCBjb25zdGFudCgndW5rbm93bicpXSxcbl0pXG5cbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIHJlc29sdmVJbXBvcnRUeXBlKG5hbWUsIGNvbnRleHQpIHtcbiAgcmV0dXJuIHR5cGVUZXN0KG5hbWUsIGNvbnRleHQuc2V0dGluZ3MsIHJlc29sdmUobmFtZSwgY29udGV4dCkpXG59XG4iXX0=
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Wed Apr 12 2017 00:44:47 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
