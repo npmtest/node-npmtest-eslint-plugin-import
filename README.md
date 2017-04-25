@@ -1,6 +1,6 @@
 # npmtest-eslint-plugin-import
 
-#### test coverage for  [eslint-plugin-import (v2.2.0)](https://github.com/benmosher/eslint-plugin-import)  [![npm package](https://img.shields.io/npm/v/npmtest-eslint-plugin-import.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-eslint-plugin-import) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-eslint-plugin-import.svg)](https://travis-ci.org/npmtest/node-npmtest-eslint-plugin-import)
+#### basic test coverage for  [eslint-plugin-import (v2.2.0)](https://github.com/benmosher/eslint-plugin-import)  [![npm package](https://img.shields.io/npm/v/npmtest-eslint-plugin-import.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-eslint-plugin-import) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-eslint-plugin-import.svg)](https://travis-ci.org/npmtest/node-npmtest-eslint-plugin-import)
 
 #### Import with sanity.
 
@@ -10,7 +10,7 @@
 |--:|:--|
 | coverage : | [![istanbul-coverage](https://npmtest.github.io/node-npmtest-eslint-plugin-import/build/coverage.badge.svg)](https://npmtest.github.io/node-npmtest-eslint-plugin-import/build/coverage.html/index.html)|
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-eslint-plugin-import/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-eslint-plugin-import/build/test-report.html)|
-| build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-eslint-plugin-import/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-eslint-plugin-import/tree/gh-pages/build)|
+| test-server-github : | [![github.com test-server](https://npmtest.github.io/node-npmtest-eslint-plugin-import/GitHub-Mark-32px.png)](https://npmtest.github.io/node-npmtest-eslint-plugin-import/build/app/index.html) | | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-eslint-plugin-import/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-eslint-plugin-import/tree/gh-pages/build)|
 
 - [https://npmtest.github.io/node-npmtest-eslint-plugin-import/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-eslint-plugin-import/build/coverage.html/index.html)
 
@@ -141,7 +141,8 @@
         "test-compiled": "npm run prepublish && NODE_PATH=./lib mocha --compilers js:babel-register --recursive tests/src",
         "watch": "cross-env NODE_PATH=./src mocha --watch --compilers js:babel-register --recursive tests/src"
     },
-    "version": "2.2.0"
+    "version": "2.2.0",
+    "bin": {}
 }
 ```
 
